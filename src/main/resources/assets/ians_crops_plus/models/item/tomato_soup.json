@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ians_crops_plus:item/tomato_soup"
+  }
+}

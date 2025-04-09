@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "ians_crops_plus:tomato_soup",
+    "minecraft:bread"
+  ],
+  "result": {
+    "id": "ians_crops_plus:tomato_soup_and_breadsticks",
+    "count": 1
+  }
+}
