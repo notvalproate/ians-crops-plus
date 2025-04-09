@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "ians_crops_plus:item/pink_garnet"
+  }
+}
