@@ -1,5 +1,6 @@
 package com.valproate.cropsplus;
 
+import com.valproate.cropsplus.item.CropItems;
 import com.valproate.cropsplus.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -12,6 +13,6 @@ public class IansCropsPlus implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModItems.registerModItems();
+		CropItems.initialize();
 	}
 }

@@ -2,7 +2,9 @@ package com.valproate.cropsplus.item;
 
 import com.valproate.cropsplus.IansCropsPlus;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.component.type.FoodComponents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -12,9 +14,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
 
-public class ModItems {
-    public static final Item PINK_GARNET = register("pink_garnet",  Item::new, new Item.Settings());
-
+public abstract class ModItems {
     public static Item register(String name, Function<Item.Settings, Item> itemFactory, Item.Settings settings) {
         RegistryKey<Item> itemKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(IansCropsPlus.MOD_ID, name));
         Item item = itemFactory.apply(settings.registryKey(itemKey));
@@ -23,9 +23,10 @@ public class ModItems {
         return item;
     }
 
-    public static void registerModItems() {
-        IansCropsPlus.LOGGER.info("Registering Mod Items for " + IansCropsPlus.MOD_ID);
-
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(itemGroup -> itemGroup.add(PINK_GARNET));
+    @SafeVarargs
+    public static void addItemToItemGroups(Item item, RegistryKey<ItemGroup>... itemGroups) {
+        for(var group : itemGroups) {
+            ItemGroupEvents.modifyEntriesEvent(group).register(itemGroup -> itemGroup.add(item));
+        }
     }
 }
